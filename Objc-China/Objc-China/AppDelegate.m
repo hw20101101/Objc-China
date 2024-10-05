@@ -6,6 +6,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Store.h"
 
 @interface AppDelegate ()
 
@@ -13,6 +14,20 @@
 
 @implementation AppDelegate
 
++ (instancetype)sharedDelegate
+{
+    return [UIApplication sharedApplication].delegate;
+}
+
+@synthesize store = _store;
+
+- (Store *)store
+{
+    if (_store == nil) {
+        _store = [Store store];
+    }
+    return _store;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.

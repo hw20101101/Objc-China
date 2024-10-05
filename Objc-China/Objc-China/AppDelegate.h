@@ -8,9 +8,15 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
+@class Store;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
++ (instancetype)sharedDelegate;
+
 @property (readonly, strong) NSPersistentContainer *persistentContainer;
+
+@property (readonly, strong, nonatomic) Store *store;
 
 - (void)saveContext;
 
