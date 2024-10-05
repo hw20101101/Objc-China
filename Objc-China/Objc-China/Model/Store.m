@@ -24,6 +24,7 @@
     return self;
 }
 
+// view controller 没必要知道这些，所以我们创建了一个 Store 对象来做这些事。通过分离，我们就可以复用这些代码，单独测试他们，并且让 view controller 保持小巧。Store 对象会关心数据加载、缓存和设置数据栈
 - (void)readArchive
 {
     NSURL *archiveURL = [[NSBundle bundleForClass:[self class]] URLForResource:@"photodata" withExtension:@"bin"];

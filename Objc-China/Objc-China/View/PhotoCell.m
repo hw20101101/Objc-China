@@ -9,6 +9,9 @@
 
 @implementation PhotoCell
 
+// 把 View 代码移到 View 层
+// 不应该在 view controller 中构建复杂的 view 层次结构
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];    

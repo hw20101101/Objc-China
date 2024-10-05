@@ -27,15 +27,21 @@
 
 - (void)setupTableView {
     
+    //使用一个 block 来设置 cell，也可以用 delegate 来做这件事，这取决于你的习惯。
     TableViewCellConfigureBlock configureCell = ^(PhotoCell *cell, Photo *photo) {
         [cell configureForPhoto:photo];
     };
     
     NSArray *photos = [AppDelegate sharedDelegate].store.sortedPhotos;
+    
+    // 创建一个 ArrayDataSource 类的实例作为 table view 的 data source
     self.dataSource = [[ArrayDataSource alloc] initWithItems:photos cellId:@"cellId" configureCellBlock:configureCell];
     self.tableView.dataSource = self.dataSource;
-    //[self.tableView registerClass:[PhotoCell class] forCellReuseIdentifier:@"cellId"];
 }
+
+/*
+ 注：把 UITableViewDataSource 的代码提取出来放到一个单独的类中，是为 view controller 瘦身的强大技术之一。
+ */
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
